@@ -70,16 +70,17 @@ export default function LoginPage() {
   };
 
   /* ------------------ OTP Verify ------------------ */
-  const otpVerificationHandler = async (
-    values: { otp: string; email: string },
-    form: any,
-  ) => {
+  const otpVerificationHandler = async (values: {
+    otp: string;
+    email: string;
+  }) => {
     setOtpLoading(true);
 
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/verify-otp`,
       {
         method: "POST",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       },
@@ -94,7 +95,7 @@ export default function LoginPage() {
       dispatch(login(data.data));
       reset();
 
-      router.push("/dashboard");
+      router.push("/");
     }
 
     setOtpLoading(false);

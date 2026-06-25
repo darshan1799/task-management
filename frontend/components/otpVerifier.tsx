@@ -171,14 +171,6 @@ export default function OtpVerification({
           >
             {loading ? "Verifying..." : "Verify OTP"}
           </button>
-
-          <button
-            type="button"
-            onClick={() => handleResendOtp(email)}
-            className="text-sm text-center text-blue-600 hover:underline"
-          >
-            Resend OTP
-          </button>
         </form>
       </div>
     </>
